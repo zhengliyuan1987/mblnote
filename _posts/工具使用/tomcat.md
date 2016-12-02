@@ -18,6 +18,11 @@ Linxu系统: apach/bin/startup.sh开始处中增加如下内容：
 	1. SET CATALINA_OPTS=-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8788  
 
 
+## tomcat 配置域名到多个工程目录配置
+tomcat server.xml host appbase
+
+
+
 
 
 

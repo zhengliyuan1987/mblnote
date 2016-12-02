@@ -185,3 +185,39 @@ mkdir /mnt/usb
 mount命令格式：mount [-参数] [设备名称] [挂载点] [其他参数]
 mount /dev/sdb1 /mnt/usb
 umount /dev/sdb1
+
+## 改变用户组和用户
+```
+基本语法：
+chown [-R] 账号名称 文件或目录
+chown [-R] 账号名称:用户组名称 文件或目录
+参数：
+-R : 进行递归( recursive )的持续更改，即连同子目录下的所有文件、目录
+都更新成为这个用户组。常常用在更改某一目录的情况。
+示例1：
+[root@localhost home]# touch testfile //由 root 用户创建文件
+[root@localhost home]# ls testfile –l
+
+```
+
+## 查看文件夹下容量
+du -ah --max-depth=1
+
+## 配置ssh 超时空闲时间
+服务器配置:
+```
+/etc/profile 中的配置，增加一个参数TMOUT=6000       //100分钟，应该够用了
+echo "TMOUT=6000 " >>/etc/profile
+source /etc/profile   //立即生效
+
+```
+客户端配置:
+方法很简单，只需在客户端电脑上编辑（需要root权限）/etc/ssh/ssh_config，并添加如下一行：
+`ServerAliveInterval 60`
+
+服务器端设置:
+
+如果有相应的权限，也可以在服务器端设置，即编辑/etc/ssh/sshd_config，并添加：
+`ClientAliveInterval 60`
+
+重启SSH服务器后该项设置会生效。每一个连接到此服务器上的客户端都会受其影响。应注意启用该功能后，安全性会有一定下降（比如忘记登出时……）

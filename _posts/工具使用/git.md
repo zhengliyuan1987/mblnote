@@ -1,10 +1,12 @@
 ---
+
 title: git
 date: 2016-11-09 15:13:48
 tags: [工具使用,git]
 categories: 工具使用
 keywords: 工具使用,git
 description: 记录git的常用命令。
+
 ---
 
 ## git push origin master报错
@@ -66,5 +68,27 @@ git merge master
 git reset --hard <commit_id>
 git push origin HEAD --force
 
-Edit
-Edit2
+
+## git 更换仓库
+1. 从原地址克隆一份裸版本库，比如原本托管于 GitHub
+git clone --bare git://github.com/username/project.git
+2. 然后到新的 Git 服务器上创建一个新项目，比如 GitCafe。
+3. 以镜像推送的方式上传代码到 GitCafe 服务器上。
+```
+cd project.git
+git push --mirror git@gitcafe.com/username/newproject.git
+```
+4. 先查看remote的名字
+```
+git branch -r
+```
+5. 假设你的remote是origin，用git remote set_url 更换地址
+```
+git remote set-url origin remote_git_address
+```
+
+
+## 提交代码
+```
+git commit -am "提交说明"
+```
