@@ -10,7 +10,6 @@ description: 记录git的常用命令。
 ---
 
 ## git push origin master报错
-
 fatal: could not read Username for 'https://github.com': No such file or directo
 原因使用https方式的时候 在git remote add origin 的https url 里面没有用户名和密码
 修改为如下：
