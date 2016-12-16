@@ -20,3 +20,15 @@ vim设置粘贴可以500行
 vim配置文件：/etc/vim/vimrc
 
 查找字符串 ?内容    N下一个   n上一个
+
+## 配置文件位置
+vim /etc/vimrc
+## 设置粘贴模式
+ 粘贴模式可以不带缩进粘贴
+ 
+ `set paste`
+ 
+ `set nopaste`
+ 
+ 也可以在.vimrc中设置切换的快捷键，比如设置F9，则可以在.vimrc中加入：
+ `set pastetoggle=<F9>`
