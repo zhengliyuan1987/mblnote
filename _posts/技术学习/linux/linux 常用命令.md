@@ -5,6 +5,7 @@ tags: [技术学习,linux,centos]
 categories: 技术学习
 keywords: 技术学习,linux
 description: 介绍linux软件安装，配置
+
 ---
 #linux 常用命令
 
@@ -221,3 +222,11 @@ source /etc/profile   //立即生效
 `ClientAliveInterval 60`
 
 重启SSH服务器后该项设置会生效。每一个连接到此服务器上的客户端都会受其影响。应注意启用该功能后，安全性会有一定下降（比如忘记登出时……）
+
+## Linux常见问题解答--如何修复"tar：由于前一个错误导致于失败状态中退出"
+Exiting with failure status due to previous errors
+去掉v，只看错误流
+
+## 百度网盘公开链接wget下载
+wget -c  --referer=公开链接地址  -O 输出文件名 "直接下载地址"    ，其中-c表示断点续传
+wget -c --referer=http://pan.baidu.com/s/1pL0IUxH  -O a.zip "http://61.179.228.93/d1.baidupcs.com/file/4b43140bd6212b333237b391961932a4?bkt=p3-0000eea78a1d47d0402b131c2736fe70a488&xcode=c0a39d5fa7dcff84c1a1bca47e82ddfb123eeb8f4d2e9e54ded0b7c77404c736&fid=50867796-250528-751846568268583&time=1481855378&sign=FDTAXGERLBH-DCb740ccc5511e5e8fedcff06b081203-mq8GWRwB7zY3FSpQOglOpVoSn8I%3D&to=lc&fm=Qin,B,U,nc&sta_dx=137584648&sta_cs=2496&sta_ft=7z&sta_ct=7&sta_mt=7&fm2=Qingdao,B,U,nc&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=14005e8f94567db20cb9f1c95efbd7a8a7b7c50dcb1a000008336008&sl=75956300&expires=8h&rt=sh&r=739923821&mlogid=8127629174281954396&vuk=-&vbdid=2201694974&fin=FIFA.2002.Green.Edition-ALI213.7z&fn=FIFA.2002.Green.Edition-ALI213.7z&slt=pm&uta=0&rtype=1&iv=0&isw=0&dp-logid=8127629174281954396&dp-callid=0.1.1&csl=600&csign=RJ%2BYoZ6FqCL1OLeGHSbtuImu3ys%3D&wshc_tag=0&wsts_tag=58535192&wsid_tag=6fccf309&wsiphost=ipdbm"

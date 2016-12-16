@@ -7,4 +7,5 @@ keywords: 技术学习,linux,shell
 description: 介绍shell命令
 
 ---
+
 cd `dirname $0`

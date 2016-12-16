@@ -177,3 +177,6 @@ service mysqld restart
 ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
 执行重新设置密码
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '********'
+
+## 一条命令登录mysql 执行sql语句，然后退出
+mysql -h ip -uuser -ppwd -e"select * from bdpops.t_static_data limit 1"

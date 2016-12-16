@@ -1,9 +1,9 @@
 ---
-title: html
+title: xss攻击
 date: 2016-11-09 15:13:48
-tags: [技术学习,web,html]
+tags: [技术学习,web,xss]
 categories: 技术学习
-keywords: 技术学习,web,信息安全
+keywords: 技术学习,web,xss
 description: 介绍html
 
 ---

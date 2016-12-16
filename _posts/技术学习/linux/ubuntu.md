@@ -87,3 +87,7 @@ sudo restart lighddm
 解决方法：重新安装indicator-datetime。 首先，在确认indicator-datetime确实被误删之后，使用命令sudo apt-get install indicator-datetime 安装。其次，配置日期时间：sudo dpkg-reconfigure --frontend noninteractive tzdata 。最后，重启unity：sudo killall unity-panel-service 。
 
 
+### 设置分辨率 xrandr
+```
+sudo xrandr -s 1360x768_60
+```
