@@ -6,7 +6,25 @@ categories: 技术学习
 keywords: 技术学习,linux,ubuntu
 description: 介绍ubuntu 命令，配置
 ---
+
+## 删除无用软件
+1. 删除libreoffice
+```
+    sudo apt-get remove libreoffice-common
+```
+2. 删除Amazon的链接
+```
+    sudo apt-get remove unity-webapps-common
+```
+3. 删掉基本不用的自带软件
+```
+    sudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku landscape-client-ui-install
+    sudo apt-get remove onboard deja-dup
+```
+
+
 ## 常用软件
+
 | 名称                | 说明                                    |
 |--------------------|----------------------------------------|
 |    ssh             |  客户端       |

@@ -28,16 +28,42 @@ description: alluxio介绍与安装
 
 ## 安装
 - 解压
-```
+```bash
 $ tar -xzf alluxio-1.3.0-bin.tar.gz
 $ cd alluxio-1.3.0
 ```
 - 生成配置文件
-```
+```bash
 ./bin/alluxio bootstrapConf localhost
 ```
 
-## 启动 
-```
+## 格式化Alluxio
+我们格式化Alluxio为启动Alluxio做准备。如下命令会格式化Alluxio的日志和worker存储目录，以便接下来启动master和worker。
+```bash
 ./bin/alluxio format
+```
+## 启动 
+我们启动Alluxio！Alluxio默认配置成在localhost启动master和worker。我们可以用如下命令在localhost启动Alluxio：
+```bash
+./bin/alluxio-start.sh local
+```
+恭喜！Alluxio已经启动并运行了！你可以访问http://localhost:19999查看Alluxio master的运行状态，访问http://localhost:30000查看Alluxio worker的运行状态。
+
+## 使用Alluxio Shell
+- 列出文件
+```bash
+./bin/alluxio fs ls /
+```
+- 上传文件
+```bash
+./bin/alluxio fs copyFromLocal LICENSE /LICENSE
+```
+- 查看文件
+```bash
+./bin/alluxio fs cat /LICENSE
+```
+
+## 关闭
+```bash
+./bin/alluxio-stop.sh all
 ```

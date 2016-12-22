@@ -7,7 +7,7 @@ keywords: 工具使用,haproxy
 description: 记录haproxy的安装。
 ---
 
-## 编译
+## 编译1
 
 uname -a 查看linux版本
 vim -R README   ，查找 ?linux ，N查找下一个，找到linux版本对应target
