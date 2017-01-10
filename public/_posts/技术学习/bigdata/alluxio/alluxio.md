@@ -1,9 +1,14 @@
 ---
 title: alluxio介绍与安装
+
 date: 2016-12-13 09:23:00
+
 tags: [技术学习,bigdata]
+
 categories: 技术学习
+
 keywords: 技术学习,bigdata,alluxio
+
 description: alluxio介绍与安装
 
 ---
@@ -15,11 +20,6 @@ description: alluxio介绍与安装
 
 - 由项目的创建者李浩源以及来自UC Berkeley, Google, CMU, Palantir, Stanford, Yahoo等不同公司和学校的项目核心开发者组成。
 - 完成750万 dollars 的A轮融资，由Andreessen Horowitz投资（硅谷最著名的VC之一，主要成员为网景公司创始人之一）。
-
-作者：Mingche Su
-链接：https://zhuanlan.zhihu.com/p/20624086
-来源：知乎
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 ## 术语
 - Amazon AWS ：亚马逊AWS 云服务-中国领先的可扩展云计算平台
@@ -47,6 +47,10 @@ $ cd alluxio-1.3.0
 ```bash
 ./bin/alluxio-start.sh local
 ```
+如果希望启动worker，则在配置文件workers中配置所有worker的hostname或ip，回车分割
+```bash
+./bin/alluxio-start.sh all
+```
 恭喜！Alluxio已经启动并运行了！你可以访问http://localhost:19999查看Alluxio master的运行状态，访问http://localhost:30000查看Alluxio worker的运行状态。
 
 ## 使用Alluxio Shell
@@ -66,4 +70,43 @@ $ cd alluxio-1.3.0
 ## 关闭
 ```bash
 ./bin/alluxio-stop.sh all
+```
+
+
+## Alluxio后端存储（HDFS）
+- 修改配置文件./conf/alluxio-env.sh
+```properties
+ALLUXIO_MASTER_HOSTNAME=${ALLUXIO_MASTER_HOSTNAME:-"BJYFF3-Basketball-170132"}
+ALLUXIO_WORKER_MEMORY_SIZE=${ALLUXIO_WORKER_MEMORY_SIZE:-"85688MB"}
+ALLUXIO_RAM_FOLDER=${ALLUXIO_RAM_FOLDER:-"/mnt/ramdisk"}
+ALLUXIO_UNDERFS_ADDRESS=hdfs://ns2/user/maobaolong/mbl
+```
+- 修改配置文件./conf/alluxio-c
+```properties
+alluxio.underfs.hdfs.configuration=/home/maobaolong/hadoop_conf/hdfs-site.xml
+```
+
+## 所有配置
+[1.3版本所有配置](http://www.alluxio.org/docs/1.3/cn/Configuration-Settings.html)
+
+
+## mount 
+bin/alluxio fs mount -readonly /test /software/temp/test/
+
+## alluxio使用非root用户启动集群的问题分析
+mount -t ramfs -o size=100G ramfs /home/appadmin/ramdisk
+chown appadmin:appadmin /home/appadmin/ramdisk
+alluxio-start all NoMount
+
+## mvn install
+mvn clean install -Dhadoop.version=2.7.1 -Pyarn,spark -DskipTests -Dfindbugs.skip -Dmaven.javadoc.skip -Dcheckstyle.skip
+ 
+## ReadType
+```
+CACHE_PROMOTE:
+  如果读取的数据在Worker上时，该数据被移动到Worker的最高层。如果该数据不在本地Worker的Alluxio存储中，那么就将一个副本添加到本地Alluxio Worker中，用于每次完整地读取数据快。这是默认的读类型。
+CACHE:
+  如果该数据不在本地Worker的Alluxio存储中，那么就将一个副本添加到本地Alluxio Worker中，用于每次完整地读取数据快。
+NO_CACHE:
+  不会创建副本。
 ```

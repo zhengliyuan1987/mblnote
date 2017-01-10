@@ -5,7 +5,9 @@ tags: [技术学习,kafka,分布式]
 categories: 技术学习
 keywords: 技术学习,kafka,分布式
 description: 介绍kafka的api
+
 ---
+
 ## 启动zookeeper
 ```
 bin/zookeeper-server-start.sh config/zookeeper.properties &

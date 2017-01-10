@@ -13,7 +13,7 @@ mvn install:install-file -DgroupId=com.facebook.presto -DartifactId=presto-jdbc 
 
 ## 打包jar 
 ### 依赖包独立存在
-````
+```
 pom中加入
 <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -31,3 +31,10 @@ pom中加入
 然后把lib里的所有jar放到你工程的jar包所在的目录
 运行java -jar youjar.jar
 ```
+
+## Maven中-DskipTests和-Dmaven.test.skip=true的区别
+在使用mvn package进行编译、打包时，Maven会执行src/test/java中的JUnit测试用例，有时为了跳过测试，会使用参数-DskipTests和-Dmaven.test.skip=true，这两个参数的主要区别是：
+
+-DskipTests，不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下。
+
+-Dmaven.test.skip=true，不执行测试用例，也不编译测试用例类。

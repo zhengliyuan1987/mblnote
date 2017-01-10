@@ -89,3 +89,55 @@ git remote set-url origin remote_git_address
 ```
 git commit -am "提交说明"
 ```
+
+## 追踪远端更新
+- 为了将远程的Alluxio源码改动更新到你本地的副本中，你需要创建一个指向远程Alluxio源代码库的源。在刚拷贝的副本的目录下，运行：
+```bash
+git remote add upstream https://github.com/Alluxio/alluxio.git
+```
+- 显示所有分之，并比较本地和远端分之版本
+```bash
+git branch -av
+```
+- 把远端的分支抓取过来
+```bash
+git fetch
+```
+
+- 切换到分支
+```bash
+git checkout --track remotes/upstream/branch-1.4
+```
+
+- revert file,such as pom.xml
+```
+git checkout -- pom.xml
+git push origin branch-1.4
+```
+
+
+- merge master branch
+```bash
+git checkout master
+git merge upstream/master
+git branch -av
+git status 
+git push
+```
+
+
+- create a sub branch of an assigned branch
+```bash
+#切换到分支
+git checkout branch1
+
+#基于该分支创建子分支
+git checkout -b branch2_based_on_b1 branch1 
+
+```
+
+- 为推送当前分支并建立与远程上游的跟踪
+```bash
+git push --set-upstream origin mbl-baseon-JDAlluxio-1.3.0
+```
+     
